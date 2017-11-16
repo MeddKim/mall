@@ -44,6 +44,8 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
+
+
         <!-- 生成实体类地址 -->
         <javaModelGenerator targetPackage="${generator.domainPackage}"
                             targetProject="${generator.targetProject}/src/main/java">
@@ -51,6 +53,7 @@
             <property name="enableSubPackages" value="true" />
             <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
             <property name="trimStrings" value="true" />
+            <property name="rootClass" value="com.mall.core.domain.entity.BaseEntity"/>
         </javaModelGenerator>
 
         <!-- 生成mapxml文件 -->
@@ -88,7 +91,7 @@
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
-
+            <rootClass  />
         </table>
     </context>
 </generatorConfiguration>
