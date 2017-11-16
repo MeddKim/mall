@@ -91,7 +91,23 @@
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
-            <rootClass  />
+            <ignoreColumn column="is_available"/>
+            <ignoreColumn column="is_deleted"/>
+            <ignoreColumn column="version_no"/>
+            <ignoreColumn column="create_userid"/>
+            <ignoreColumn column="create_username"/>
+            <ignoreColumn column="create_userip"/>
+            <ignoreColumn column="create_usermac"/>
+            <ignoreColumn column="create_time"/>
+            <ignoreColumn column="create_time_db"/>
+            <ignoreColumn column="server_ip"/>
+            <ignoreColumn column="update_userid"/>
+            <ignoreColumn column="update_username"/>
+            <ignoreColumn column="update_userip"/>
+            <ignoreColumn column="update_usermac"/>
+            <ignoreColumn column="update_time"/>
+            <ignoreColumn column="update_time_db"/>
+            <ignoreColumn column="client_versionno"/>
         </table>
     </context>
 </generatorConfiguration>
