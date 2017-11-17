@@ -1,0 +1,10 @@
+server:
+  port: 8001
+#eureka:
+#  instance:
+#    hostname: eureka-instance-one
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+#      default-zone: http://eureka-instance-one:8001/eureka/

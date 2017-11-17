@@ -4,16 +4,17 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
 public class BaseEntity implements Serializable {
 
-    protected Boolean isAvailable;
+    protected Boolean isAvailable;   //是否启用
 
-    protected Boolean isDeleted;
+    protected Boolean isDeleted;    //是否删除
 
-    protected Integer versionNo;
+    protected Integer versionNo;    //数据版本
 
     protected Long createUserid;    //创建人ID
 
@@ -23,25 +24,26 @@ public class BaseEntity implements Serializable {
 
     protected String createUsermac;  //创建人Mac地址
 
-    protected Timestamp createTime;  //创建时间
+    protected LocalDateTime createTime;  //创建时间
 
-    protected Timestamp createTimeDb;
+    protected LocalDateTime createTimeDb;
 
     protected String serverIp;  //服务器Ip
 
-    private Long updateUserid;  //最后修改人ID
+    protected Long updateUserid;  //最后修改人ID
 
-    private String updateUsername; //最后修改人名称
+    protected String updateUsername; //最后修改人名称
 
-    private String updateUserip;  //最后修改人IP
+    protected String updateUserip;  //最后修改人IP
 
-    private String updateUsermac; //最后修改人Mac地址
+    protected String updateUsermac; //最后修改人Mac地址
 
-    private Date updateTime;   //最后更新时间
+    protected LocalDateTime updateTime;   //最后更新时间
 
-    private Date updateTimeDb;
+    protected LocalDateTime updateTimeDb;
 
-    private String clientVersionno;  //客户端版本号
+    protected String clientVersionno;  //客户端版本号
 
+    protected Long companyId;  //公司ID
 
 }

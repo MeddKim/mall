@@ -1,32 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mall.core.domain.mapper.product.AttributeNameMapper">
-  <resultMap id="BaseResultMap" type="com.mall.core.domain.entity.product.AttributeName">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="company_id" jdbcType="BIGINT" property="companyId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, name, type, company_id
+
+  <!-- Common sql start-->
+  <sql id="Common_Column_List">
+    is_available, is_deleted, version_no, create_userid, create_username,
+    create_userip, create_usermac, create_time, create_time_db, server_ip, update_userid,
+    update_username, update_userip, update_usermac, update_time, update_time_db, client_versionno,
+    company_id
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+
+  <sql id="Common_Insert_Key">
+    <if test="isAvailable != null">
+      is_available,
+    </if>
+    <if test="isDeleted != null">
+      is_deleted,
+    </if>
+    <if test="versionNo != null">
+      version_no,
+    </if>
+    <if test="createUserid != null">
+      create_userid,
+    </if>
+    <if test="createUsername != null">
+      create_username,
+    </if>
+    <if test="createUserip != null">
+      create_userip,
+    </if>
+    <if test="createUsermac != null">
+      create_usermac,
+    </if>
+    <if test="createTime != null">
+      create_time,
+    </if>
+    <if test="createTimeDb != null">
+      create_time_db,
+    </if>
+    <if test="serverIp != null">
+      server_ip,
+    </if>
+    <if test="updateUserid != null">
+      update_userid,
+    </if>
+    <if test="updateUsername != null">
+      update_username,
+    </if>
+    <if test="updateUserip != null">
+      update_userip,
+    </if>
+    <if test="updateUsermac != null">
+      update_usermac,
+    </if>
+    <if test="updateTime != null">
+      update_time,
+    </if>
+    <if test="updateTimeDb != null">
+      update_time_db,
+    </if>
+    <if test="clientVersionno != null">
+      client_versionno,
+    </if>
+    <if test="companyId != null">
+      company_id,
+    </if>
+  </sql>
+
+  <sql id="Common_Insert_Value">
+    <if test="isAvailable != null">
+      #{isAvailable},
+    </if>
+    <if test="isDeleted != null">
+      #{isDeleted},
+    </if>
+    <if test="versionNo != null">
+      #{versionNo},
+    </if>
+    <if test="createUserid != null">
+      #{createUserid},
+    </if>
+    <if test="createUsername != null">
+      #{createUsername},
+    </if>
+    <if test="createUserip != null">
+      #{createUserip},
+    </if>
+    <if test="createUsermac != null">
+      #{createUsermac},
+    </if>
+    <if test="createTime != null">
+      #{createTime},
+    </if>
+    <if test="createTimeDb != null">
+      #{createTimeDb},
+    </if>
+    <if test="serverIp != null">
+      #{serverIp},
+    </if>
+    <if test="updateUserid != null">
+      #{updateUserid},
+    </if>
+    <if test="updateUsername != null">
+      #{updateUsername},
+    </if>
+    <if test="updateUserip != null">
+      #{updateUserip},
+    </if>
+    <if test="updateUsermac != null">
+      #{updateUsermac},
+    </if>
+    <if test="updateTime != null">
+      #{updateTime},
+    </if>
+    <if test="updateTimeDb != null">
+      #{updateTimeDb},
+    </if>
+    <if test="clientVersionno != null">
+      #{clientVersionno,jdbcType=VARCHAR},
+    </if>
+    <if test="companyId != null">
+      #{companyId,jdbcType=BIGINT},
+    </if>
+  </sql>
+
+  <sql id="Common_Update_Sql">
+    <if test="isAvailable != null">
+      is_available = #{isAvailable},
+    </if>
+    <if test="isDeleted != null">
+      is_deleted = #{isDeleted},
+    </if>
+    <if test="versionNo != null">
+      version_no = #{versionNo},
+    </if>
+    <if test="createUserid != null">
+      create_userid = #{createUserid},
+    </if>
+    <if test="createUsername != null">
+      create_username = #{createUsername},
+    </if>
+    <if test="createUserip != null">
+      create_userip = #{createUserip},
+    </if>
+    <if test="createUsermac != null">
+      create_usermac = #{createUsermac},
+    </if>
+    <if test="createTime != null">
+      create_time = #{createTime},
+    </if>
+    <if test="createTimeDb != null">
+      create_time_db = #{createTimeDb},
+    </if>
+    <if test="serverIp != null">
+      server_ip = #{serverIp},
+    </if>
+    <if test="updateUserid != null">
+      update_userid = #{updateUserid},
+    </if>
+    <if test="updateUsername != null">
+      update_username = #{updateUsername},
+    </if>
+    <if test="updateUserip != null">
+      update_userip = #{updateUserip},
+    </if>
+    <if test="updateUsermac != null">
+      update_usermac = #{updateUsermac},
+    </if>
+    <if test="updateTime != null">
+      update_time = #{updateTime},
+    </if>
+    <if test="updateTimeDb != null">
+      update_time_db = #{updateTimeDb},
+    </if>
+    <if test="clientVersionno != null">
+      client_versionno = #{clientVersionno},
+    </if>
+    <if test="companyId != null">
+      company_id = #{companyId},
+    </if>
+  </sql>
+  <!-- Common sql end-->
+
+
+  <sql id="Base_Column_List">
+    id, name, type,
+    <include refid="Common_Column_List"/>
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="com.mall.core.domain.entity.product.AttributeName">
     select 
     <include refid="Base_Column_List" />
     from attribute_name
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from attribute_name
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+
   <insert id="insert" parameterType="com.mall.core.domain.entity.product.AttributeName">
-    insert into attribute_name (id, name, type, 
-      company_id)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
-      #{companyId,jdbcType=BIGINT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.mall.core.domain.entity.product.AttributeName">
     insert into attribute_name
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -38,46 +207,35 @@
       <if test="type != null">
         type,
       </if>
-      <if test="companyId != null">
-        company_id,
-      </if>
+      <include refid="Common_Insert_Key"/>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id},
       </if>
       <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="type != null">
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
-      <if test="companyId != null">
-        #{companyId,jdbcType=BIGINT},
-      </if>
+      <include refid="Common_Insert_Value"/>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mall.core.domain.entity.product.AttributeName">
+
+  <update id="update" parameterType="com.mall.core.domain.entity.product.AttributeName">
     update attribute_name
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
-      <if test="companyId != null">
-        company_id = #{companyId,jdbcType=BIGINT},
-      </if>
+      <include refid="Common_Update_Sql"/>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mall.core.domain.entity.product.AttributeName">
-    update attribute_name
-    set name = #{name,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER},
-      company_id = #{companyId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+
   <cache />
 </mapper>

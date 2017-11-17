@@ -42,6 +42,8 @@
         <javaTypeResolver>
             <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
             <property name="forceBigDecimals" value="false" />
+
+            <property name="immutable" value="true"/>
         </javaTypeResolver>
 
 
@@ -53,7 +55,7 @@
             <property name="enableSubPackages" value="true" />
             <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
             <property name="trimStrings" value="true" />
-            <property name="rootClass" value="com.mall.core.domain.entity.BaseEntity"/>
+            <!--<property name="rootClass" value="com.mall.core.domain.entity.BaseEntity"/>-->
         </javaModelGenerator>
 
         <!-- 生成mapxml文件 -->
@@ -87,10 +89,33 @@
                <!--selectByExampleQueryId="false">-->
         <!--</table>-->
 
-        <table tableName="attribute_name" domainObjectName="AttributeName"
+        <!--<table tableName="attribute_name" domainObjectName="AttributeName"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+            <!--<property name="rootClass" value="com.mall.core.domain.entity.BaseEntity"/>-->
+            <!--<ignoreColumn column="is_available"/>-->
+            <!--<ignoreColumn column="is_deleted"/>-->
+            <!--<ignoreColumn column="version_no"/>-->
+            <!--<ignoreColumn column="create_userid"/>-->
+            <!--<ignoreColumn column="create_username"/>-->
+            <!--<ignoreColumn column="create_userip"/>-->
+            <!--<ignoreColumn column="create_usermac"/>-->
+            <!--<ignoreColumn column="create_time"/>-->
+            <!--<ignoreColumn column="create_time_db"/>-->
+            <!--<ignoreColumn column="server_ip"/>-->
+            <!--<ignoreColumn column="update_userid"/>-->
+            <!--<ignoreColumn column="update_username"/>-->
+            <!--<ignoreColumn column="update_userip"/>-->
+            <!--<ignoreColumn column="update_usermac"/>-->
+            <!--<ignoreColumn column="update_time"/>-->
+            <!--<ignoreColumn column="update_time_db"/>-->
+            <!--<ignoreColumn column="client_versionno"/>-->
+            <!--<ignoreColumn column="company_id"/>-->
+
+<table tableName="attribute_value" domainObjectName="AttributeValue"
         enableCountByExample="false" enableUpdateByExample="false"
-        enableDeleteByExample="false" enableSelectByExample="false"
-        selectByExampleQueryId="false">
+        enableDeleteByExample="false" enableSelectByExample="false">
             <ignoreColumn column="is_available"/>
             <ignoreColumn column="is_deleted"/>
             <ignoreColumn column="version_no"/>
@@ -108,6 +133,7 @@
             <ignoreColumn column="update_time"/>
             <ignoreColumn column="update_time_db"/>
             <ignoreColumn column="client_versionno"/>
+            <ignoreColumn column="company_id"/>
         </table>
     </context>
 </generatorConfiguration>
