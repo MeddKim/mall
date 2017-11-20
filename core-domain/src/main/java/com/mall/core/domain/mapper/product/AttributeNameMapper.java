@@ -1,17 +1,20 @@
 package com.mall.core.domain.mapper.product;
 
 import com.mall.core.domain.entity.product.AttributeName;
+import org.apache.ibatis.session.RowBounds;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
+@Repository
 public interface AttributeNameMapper {
-    int deleteByPrimaryKey(Long id);
 
     int insert(AttributeName record);
 
-    int insertSelective(AttributeName record);
+    int update(AttributeName record);
 
-    AttributeName selectByPrimaryKey(Long id);
+    List<AttributeName> findByParams(Map<String,Object> params);
 
-    int updateByPrimaryKeySelective(AttributeName record);
-
-    int updateByPrimaryKey(AttributeName record);
+    List<AttributeName> findByParams(Map<String,Object> params, RowBounds rowBounds);
 }

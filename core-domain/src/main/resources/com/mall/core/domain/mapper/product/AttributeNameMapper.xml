@@ -131,8 +131,8 @@
     <if test="isDeleted != null">
       is_deleted = #{isDeleted},
     </if>
-    <if test="versionNo != null">
-      version_no = #{versionNo},
+    <if test="versionNo == null">
+      version_no = version_no + 1,
     </if>
     <if test="createUserid != null">
       create_userid = #{createUserid},
@@ -188,8 +188,32 @@
     <include refid="Common_Column_List"/>
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="com.mall.core.domain.entity.product.AttributeName">
-    select 
+  <sql id="attribute_name_if_sql">
+    <if test="fuzzyName != null">
+      AND name LIKE CONCAT(#{fuzzyName},'%')
+    </if>
+    <if test="type != null">
+      AND  type = #{type}
+    </if>
+    <if test="isDeleted != null">
+      AND is_deleted = #{isDeleted}
+    </if>
+    <if test="isAvailable != null">
+      AND is_available = #{isAvailable}
+    </if>
+  </sql>
+
+  <sql id="attribute_name_order_sql">
+    <if test="createTimeDesc != null">
+      ORDER BY create_time DESC
+    </if>
+    <if test="createTimeAsc != null">
+      ORDER BY create_time ASC
+    </if>
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.mall.core.domain.entity.product.AttributeName">
+    select
     <include refid="Base_Column_List" />
     from attribute_name
     where id = #{id}
@@ -236,6 +260,16 @@
     </set>
     where id = #{id}
   </update>
+
+  <select id="findByParams" parameterType="map" resultType="com.mall.core.domain.entity.product.AttributeName">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM attribute_name
+    <where>
+      <include refid="attribute_name_if_sql"/>
+    </where>
+    <include refid="attribute_name_order_sql"/>
+  </select>
 
   <cache />
 </mapper>

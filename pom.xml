@@ -11,14 +11,14 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.0.M6</version>
+    <version>1.5.6.RELEASE</version>
   </parent>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Finchley.M2</version>
+        <version>Dalston.SR4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -28,7 +28,7 @@
   <!--<parent>-->
     <!--<groupId>org.springframework.boot</groupId>-->
     <!--<artifactId>spring-boot-starter-parent</artifactId>-->
-    <!--<version>1.5.3.RELEASE</version>-->
+    <!--<version>1.5.2.RELEASE</version>-->
   <!--</parent>-->
 
   <!--<dependencyManagement>-->
@@ -43,6 +43,7 @@
       <!--</dependency>-->
     <!--</dependencies>-->
   <!--</dependencyManagement>-->
+
 
 
   <dependencies>
@@ -65,5 +66,6 @@
     <module>mall-config-server</module>
     <module>mall-eureka-server</module>
     <module>mall-module-product</module>
+    <module>mall-api-merchant</module>
   </modules>
 </project>

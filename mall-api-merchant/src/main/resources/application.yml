@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: merchant-api
+server:
+  port: 8201
+zuul:
+  routes:
+    api-product:
+      path: /api/product/**
+      serviceId: product-module-service
+    api-b:
+      path: /api-b/**
+      serviceId: ribbon-consumer
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka

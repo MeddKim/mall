@@ -1,6 +1,6 @@
 package com.mall.core.domain.enumeration.product;
 
-public enum AtrributeTypeEnum {
+public enum AttributeTypeEnum {
     ATTGROUP,    //属性分组
     CATEGORYATT, //类目属性
     MERCHANTPRODATT,//商品属性
