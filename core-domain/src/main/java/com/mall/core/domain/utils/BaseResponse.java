@@ -27,19 +27,39 @@ public class BaseResponse {
 
     private BaseResponse(){}
 
-    public static BaseResponse successResp(Object resultContent){
-        return new BaseResponse(true,"SC_200","success",resultContent);
+    /**
+     * 正确返回，默认SC_200
+     */
+    public static BaseResponse successResp(HttpCode HttpCode){
+        return new BaseResponse(true,HttpCode.SUCCESS.getResultCode(),HttpCode.SUCCESS.getResultMessage(),null);
     }
 
-    public static BaseResponse successResp(String resultMessage){
-        return new BaseResponse(true,"SC_200",resultMessage,null);
+    /**
+     * 正确返回，使用HttpCode
+     */
+    public static BaseResponse successResp(HttpCode httpCode,Object resultContent){
+        return new BaseResponse(true,httpCode.getResultCode(),httpCode.getResultMessage(),resultContent);
     }
 
-    public static BaseResponse successResp(String resultMessage,Object resultContent){
-        return new BaseResponse(true,"SC_200",resultMessage,resultContent);
+    /**
+     * 正确返回，改写resultMessage
+     */
+    public static BaseResponse successResp(HttpCode httpCode,String resultMessage,Object resultContent){
+        return new BaseResponse(true,httpCode.getResultCode(),resultMessage ,resultContent);
     }
-    public static BaseResponse failResp(String resultCode,String resultMessage){
-        return new BaseResponse(false,resultCode,resultMessage,null);
+
+    /**
+     * 错误返回，使用HttpCode
+     */
+    public static BaseResponse failResp(HttpCode httpCode){
+        return new BaseResponse(false,httpCode.getResultCode(),httpCode.getResultMessage(),null);
+    }
+
+    /**
+     * 错误返回，改写resultMessage
+     */
+    public static BaseResponse failResp(HttpCode httpCode,String resultMessage){
+        return new BaseResponse(false,httpCode.getResultCode(),resultMessage,null);
     }
 
 }

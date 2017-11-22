@@ -4,13 +4,17 @@ import org.springframework.validation.BindingResult;
 
 public class ValidateParamException extends RuntimeException{
 
-    private BindingResult bindingResult;
+    private String message;
 
     public ValidateParamException(BindingResult bindingResult){
-        this.bindingResult = bindingResult;
+        this.message = bindingResult.getFieldError().getDefaultMessage();
+    }
+    public ValidateParamException(String msg){
+        this.message = msg;
     }
 
     public String getErrorMessage(){
-        return this.bindingResult.getFieldError().getDefaultMessage();
+        return this.message;
     }
+
 }

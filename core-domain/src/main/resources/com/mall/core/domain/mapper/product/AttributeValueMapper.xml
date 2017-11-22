@@ -1,9 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mall.core.domain.mapper.product.AttributeValueMapper">
+  <!-- Common sql start-->
+  <sql id="Common_Column_List">
+    is_available, is_deleted, version_no, create_userid, create_username,
+    create_userip, create_usermac, create_time, create_time_db, server_ip, update_userid,
+    update_username, update_userip, update_usermac, update_time, update_time_db, client_versionno,
+    company_id
+  </sql>
+
+  <sql id="Common_Insert_Key">
+    <if test="isAvailable != null">
+      is_available,
+    </if>
+    <if test="isDeleted != null">
+      is_deleted,
+    </if>
+    <if test="versionNo != null">
+      version_no,
+    </if>
+    <if test="createUserid != null">
+      create_userid,
+    </if>
+    <if test="createUsername != null">
+      create_username,
+    </if>
+    <if test="createUserip != null">
+      create_userip,
+    </if>
+    <if test="createUsermac != null">
+      create_usermac,
+    </if>
+    <if test="createTime != null">
+      create_time,
+    </if>
+    <if test="createTimeDb != null">
+      create_time_db,
+    </if>
+    <if test="serverIp != null">
+      server_ip,
+    </if>
+    <if test="updateUserid != null">
+      update_userid,
+    </if>
+    <if test="updateUsername != null">
+      update_username,
+    </if>
+    <if test="updateUserip != null">
+      update_userip,
+    </if>
+    <if test="updateUsermac != null">
+      update_usermac,
+    </if>
+    <if test="updateTime != null">
+      update_time,
+    </if>
+    <if test="updateTimeDb != null">
+      update_time_db,
+    </if>
+    <if test="clientVersionno != null">
+      client_versionno,
+    </if>
+    <if test="companyId != null">
+      company_id,
+    </if>
+  </sql>
+
+  <sql id="Common_Insert_Value">
+    <if test="isAvailable != null">
+      #{isAvailable},
+    </if>
+    <if test="isDeleted != null">
+      #{isDeleted},
+    </if>
+    <if test="versionNo != null">
+      #{versionNo},
+    </if>
+    <if test="createUserid != null">
+      #{createUserid},
+    </if>
+    <if test="createUsername != null">
+      #{createUsername},
+    </if>
+    <if test="createUserip != null">
+      #{createUserip},
+    </if>
+    <if test="createUsermac != null">
+      #{createUsermac},
+    </if>
+    <if test="createTime != null">
+      #{createTime},
+    </if>
+    <if test="createTimeDb != null">
+      #{createTimeDb},
+    </if>
+    <if test="serverIp != null">
+      #{serverIp},
+    </if>
+    <if test="updateUserid != null">
+      #{updateUserid},
+    </if>
+    <if test="updateUsername != null">
+      #{updateUsername},
+    </if>
+    <if test="updateUserip != null">
+      #{updateUserip},
+    </if>
+    <if test="updateUsermac != null">
+      #{updateUsermac},
+    </if>
+    <if test="updateTime != null">
+      #{updateTime},
+    </if>
+    <if test="updateTimeDb != null">
+      #{updateTimeDb},
+    </if>
+    <if test="clientVersionno != null">
+      #{clientVersionno,jdbcType=VARCHAR},
+    </if>
+    <if test="companyId != null">
+      #{companyId,jdbcType=BIGINT},
+    </if>
+  </sql>
+
+  <sql id="Common_Update_Sql">
+    <if test="isAvailable != null">
+      is_available = #{isAvailable},
+    </if>
+    <if test="isDeleted != null">
+      is_deleted = #{isDeleted},
+    </if>
+    <if test="versionNo == null">
+      version_no = version_no + 1,
+    </if>
+    <if test="createUserid != null">
+      create_userid = #{createUserid},
+    </if>
+    <if test="createUsername != null">
+      create_username = #{createUsername},
+    </if>
+    <if test="createUserip != null">
+      create_userip = #{createUserip},
+    </if>
+    <if test="createUsermac != null">
+      create_usermac = #{createUsermac},
+    </if>
+    <if test="createTime != null">
+      create_time = #{createTime},
+    </if>
+    <if test="createTimeDb != null">
+      create_time_db = #{createTimeDb},
+    </if>
+    <if test="serverIp != null">
+      server_ip = #{serverIp},
+    </if>
+    <if test="updateUserid != null">
+      update_userid = #{updateUserid},
+    </if>
+    <if test="updateUsername != null">
+      update_username = #{updateUsername},
+    </if>
+    <if test="updateUserip != null">
+      update_userip = #{updateUserip},
+    </if>
+    <if test="updateUsermac != null">
+      update_usermac = #{updateUsermac},
+    </if>
+    <if test="updateTime != null">
+      update_time = #{updateTime},
+    </if>
+    <if test="updateTimeDb != null">
+      update_time_db = #{updateTimeDb},
+    </if>
+    <if test="clientVersionno != null">
+      client_versionno = #{clientVersionno},
+    </if>
+    <if test="companyId != null">
+      company_id = #{companyId},
+    </if>
+  </sql>
+  <!-- Common sql end-->
+
 
   <sql id="Base_Column_List">
     id, parent_id, attribute_name_id, value, sort_value, type
+    <include refid="Common_Column_List"/>
+  </sql>
+
+  <sql id="attribute_value_if_sql">
+    <if test="atttributeNameId != null">
+      AND attribute_name_id = #{atttributeNameId}
+    </if>
+    <if test="type != null">
+      AND  type = #{type}
+    </if>
+    <if test="isDeleted != null">
+      AND is_deleted = #{isDeleted}
+    </if>
+    <if test="isAvailable != null">
+      AND is_available = #{isAvailable}
+    </if>
+    <if test="isDeleted == null">
+      AND is_deleted = FALSE
+    </if>
+    <if test="isAvailable == null">
+      AND is_available = TRUE
+    </if>
+  </sql>
+
+  <sql id="attribute_value_order_sql">
+    <if test="createTimeDesc != null">
+      ORDER BY create_time DESC
+    </if>
+    <if test="createTimeAsc != null">
+      ORDER BY create_time ASC
+    </if>
+    <if test="orderBySortValueDesc">
+      ORDER BY sort_value DESC
+    </if>
   </sql>
 
   <insert id="insert" parameterType="com.mall.core.domain.entity.product.AttributeValue">
@@ -27,6 +241,7 @@
       <if test="type != null">
         type,
       </if>
+      <include refid="Common_Insert_Key"/>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -47,8 +262,10 @@
       <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>
+      <include refid="Common_Insert_Value"/>
     </trim>
   </insert>
+
   <update id="update" parameterType="com.mall.core.domain.entity.product.AttributeValue">
     update attribute_value
     <set>
@@ -67,11 +284,20 @@
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
+      <include refid="Common_Update_Sql"/>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <cache />
+  <select id="findByParams" parameterType="map" resultType="com.mall.core.domain.entity.product.AttributeValue">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM attribute_value
+    <where>
+      <include refid="attribute_value_if_sql"/>
+    </where>
+    <include refid="attribute_value_order_sql"/>
+  </select>
 
   <cache />
 </mapper>

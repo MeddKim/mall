@@ -201,6 +201,12 @@
     <if test="isAvailable != null">
       AND is_available = #{isAvailable}
     </if>
+    <if test="isDeleted == null">
+      AND is_deleted = FALSE
+    </if>
+    <if test="isAvailable == null">
+      AND is_available = TRUE
+    </if>
   </sql>
 
   <sql id="attribute_name_order_sql">
@@ -219,7 +225,7 @@
     where id = #{id}
   </select>
 
-  <insert id="insert" parameterType="com.mall.core.domain.entity.product.AttributeName">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.mall.core.domain.entity.product.AttributeName">
     insert into attribute_name
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

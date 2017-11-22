@@ -23,3 +23,5 @@ mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: com/mall/core/domain/mapper/**/*.xml
   type-aliases-package: com.mall.core.domain.entity
+swagger:
+  enabled: true

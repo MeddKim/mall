@@ -1,6 +1,7 @@
 package com.mall.product.interfaces.service;
 
 import com.mall.core.domain.entity.product.AttributeName;
+import com.mall.core.domain.entity.product.AttributeValue;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
@@ -11,12 +12,16 @@ import java.util.Map;
  */
 public interface AttributeService {
 
-    int craeteAttributeName(AttributeName attributeName);
+    int createAttributeName(AttributeName attributeName);
 
-    List<AttributeName> findAttributeNameByParams(Map<String,Object> paramsMap, RowBounds rowBounds);
+    List<AttributeName> findAttNameByParams(Map<String,Object> paramsMap, RowBounds rowBounds);
 
     default List<AttributeName> findAttributeNameByParams(Map<String,Object> paramsMap){
-        return findAttributeNameByParams(paramsMap,null);
+        return findAttNameByParams(paramsMap,null);
     }
+
+    int createAttributeValue(AttributeValue attributeValue);
+
+    List<AttributeValue> findAttValueByParams(Map<String,Object> paramsMap);
 
 }
