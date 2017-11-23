@@ -1,6 +1,7 @@
 package com.mall.core.domain.entity;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -24,8 +25,10 @@ public class BaseEntity implements Serializable {
 
     protected String createUsermac;  //创建人Mac地址
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime createTime;  //创建时间
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime createTimeDb;
 
     protected String serverIp;  //服务器Ip
@@ -38,8 +41,10 @@ public class BaseEntity implements Serializable {
 
     protected String updateUsermac; //最后修改人Mac地址
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime updateTime;   //最后更新时间
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     protected LocalDateTime updateTimeDb;
 
     protected String clientVersionno;  //客户端版本号

@@ -1,6 +1,7 @@
 package com.mall.product.interfaces.controller;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mall.core.domain.entity.product.AttributeName;
 import com.mall.core.domain.entity.product.AttributeValue;
@@ -14,6 +15,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -128,8 +133,14 @@ public class AttributeController {
         List<AttributeValue> attributeValues = attributeService.findAttValueByParams(new ImmutableMap.Builder<String,Object>()
                 .put("attributeNameId",attNameId)
                 .build());
+        List<AttValueResp> attValueResps = Lists.newArrayList();
+        attributeValues.forEach(attributeValue -> {
+            AttValueResp attValueResp = new AttValueResp();
+            BeanUtils.copyProperties(attributeValue,attValueResp);
+            attValueResps.add(attValueResp);
+        });
 
-        return attributeValues;
+        return attValueResps;
     }
     @Data
     public static class AttValueResp{
@@ -138,8 +149,22 @@ public class AttributeController {
         private Long attributeNameId;
         private String value;
         private Integer sortValue;
+        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime createTime;
         private List<AttValueResp> GroupItems;
     }
 
+    @PostMapping("/attributeValue/add")
+    public Object addAttValues(@RequestBody AddValueResp addValueResp){
 
+        return addValueResp;
+    }
+    @Data
+    public static class AddValueResp{
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+        private LocalDateTime createTime;
+//        @DateTimeFormat(pattern = "yyyy-MM-dd")
+//        private LocalDate createDate;
+
+    }
 }
