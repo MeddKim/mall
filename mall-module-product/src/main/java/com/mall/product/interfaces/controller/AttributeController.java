@@ -1,5 +1,6 @@
 package com.mall.product.interfaces.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -15,16 +16,11 @@ import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -132,6 +128,7 @@ public class AttributeController {
         }
         List<AttributeValue> attributeValues = attributeService.findAttValueByParams(new ImmutableMap.Builder<String,Object>()
                 .put("attributeNameId",attNameId)
+                .put("orderBySortValueDesc",true)
                 .build());
         List<AttValueResp> attValueResps = Lists.newArrayList();
         attributeValues.forEach(attributeValue -> {
@@ -139,8 +136,25 @@ public class AttributeController {
             BeanUtils.copyProperties(attributeValue,attValueResp);
             attValueResps.add(attValueResp);
         });
+        //组装分组数据
+        List<AttValueResp> attValueGroupResps = generateAttValeGroup(attValueResps);
 
-        return attValueResps;
+        return attValueGroupResps;
+    }
+
+    private List<AttValueResp> generateAttValeGroup(List<AttValueResp> attValueResps){
+        List<AttValueResp> attValueRespList = Lists.newArrayList();
+        attValueResps.forEach(attValueResp -> {
+            if(0 == attValueResp.getParentId() || null == attValueResp.getParentId()){
+                attValueResps.forEach(attValueChild -> {
+                    if(attValueResp.getId().equals(attValueChild.getParentId())){
+                        attValueResp.getGroupItems().add(attValueChild);
+                    }
+                });
+                attValueRespList.add(attValueResp);
+            }
+        });
+        return attValueRespList;
     }
     @Data
     public static class AttValueResp{
@@ -149,22 +163,16 @@ public class AttributeController {
         private Long attributeNameId;
         private String value;
         private Integer sortValue;
-        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime createTime;
         private List<AttValueResp> GroupItems;
+        private AttValueResp(){
+            this.GroupItems = Lists.newArrayList();
+        }
     }
 
-    @PostMapping("/attributeValue/add")
-    public Object addAttValues(@RequestBody AddValueResp addValueResp){
-
-        return addValueResp;
-    }
-    @Data
-    public static class AddValueResp{
-        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-        private LocalDateTime createTime;
-//        @DateTimeFormat(pattern = "yyyy-MM-dd")
-//        private LocalDate createDate;
-
+    @PostMapping("/attributeValue/sort")
+    public Object ajustAttValueSort(){
+        return null;
     }
 }

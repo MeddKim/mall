@@ -117,10 +117,10 @@
       #{updateTimeDb},
     </if>
     <if test="clientVersionno != null">
-      #{clientVersionno,jdbcType=VARCHAR},
+      #{clientVersionno},
     </if>
     <if test="companyId != null">
-      #{companyId,jdbcType=BIGINT},
+      #{companyId},
     </if>
   </sql>
 

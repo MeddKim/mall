@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mall.core.domain.mapper.product.AttributeValueMapper">
+<mapper namespace="com.mall.core.domain.mapper.product.CategoryTreeMapper">
+
   <!-- Common sql start-->
   <sql id="Common_Column_List">
     is_available, is_deleted, version_no, create_userid, create_username,
@@ -181,123 +182,67 @@
   </sql>
   <!-- Common sql end-->
 
-
   <sql id="Base_Column_List">
-    id, parent_id, attribute_name_id, value, sort_value, type
-    <include refid="Common_Column_List"/>
+    id, type, name, description
+    <include refid="Common_Column_List" />
   </sql>
 
-  <sql id="attribute_value_if_sql">
-    <if test="atttributeNameId != null">
-      AND attribute_name_id = #{atttributeNameId}
-    </if>
-    <if test="type != null">
-      AND  type = #{type}
-    </if>
-    <if test="isDeleted != null">
-      AND is_deleted = #{isDeleted}
-    </if>
-    <if test="isAvailable != null">
-      AND is_available = #{isAvailable}
-    </if>
-    <if test="isDeleted == null">
-      AND is_deleted = FALSE
-    </if>
-    <if test="isAvailable == null">
-      AND is_available = TRUE
-    </if>
-  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from category_tree
+    where id = #{id}
+  </select>
 
-  <sql id="attribute_value_order_sql">
-    <if test="createTimeDesc != null">
-      ORDER BY create_time DESC
-    </if>
-    <if test="createTimeAsc != null">
-      ORDER BY create_time ASC
-    </if>
-    <if test="orderBySortValueAsc">
-      ORDER BY sort_value ASC
-    </if>
-  </sql>
-
-  <insert id="insert" parameterType="com.mall.core.domain.entity.product.AttributeValue">
-    insert into attribute_value
+  <insert id="insert" parameterType="com.mall.core.domain.entity.product.CategoryTree">
+    insert into category_tree
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="parentId != null">
-        parent_id,
-      </if>
-      <if test="attributeNameId != null">
-        attribute_name_id,
-      </if>
-      <if test="value != null">
-        value,
-      </if>
-      <if test="sortValue != null">
-        sort_value,
-      </if>
       <if test="type != null">
         type,
       </if>
-      <include refid="Common_Insert_Key"/>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <include refid="Common_Insert_Key" />
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="parentId != null">
-        #{parentId,jdbcType=BIGINT},
-      </if>
-      <if test="attributeNameId != null">
-        #{attributeNameId,jdbcType=BIGINT},
-      </if>
-      <if test="value != null">
-        #{value,jdbcType=VARCHAR},
-      </if>
-      <if test="sortValue != null">
-        #{sortValue,jdbcType=INTEGER},
+        #{id},
       </if>
       <if test="type != null">
-        #{type,jdbcType=INTEGER},
+        #{type},
       </if>
-      <include refid="Common_Insert_Value"/>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="description != null">
+        #{description},
+      </if>
+      <include refid="Common_Insert_Value" />
     </trim>
   </insert>
-
-  <update id="update" parameterType="com.mall.core.domain.entity.product.AttributeValue">
-    update attribute_value
+  <update id="update" parameterType="com.mall.core.domain.entity.product.CategoryTree">
+    update category_tree
     <set>
-      <if test="parentId != null">
-        parent_id = #{parentId,jdbcType=BIGINT},
-      </if>
-      <if test="attributeNameId != null">
-        attribute_name_id = #{attributeNameId,jdbcType=BIGINT},
-      </if>
-      <if test="value != null">
-        value = #{value,jdbcType=VARCHAR},
-      </if>
-      <if test="sortValue != null">
-        sort_value = #{sortValue,jdbcType=INTEGER},
-      </if>
       <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+        type = #{type},
       </if>
-      <include refid="Common_Update_Sql"/>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="description != null">
+        description = #{description},
+      </if>
+      <include refid="Common_Update_Sql" />
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id}
   </update>
-
-  <select id="findByParams" parameterType="map" resultType="com.mall.core.domain.entity.product.AttributeValue">
-    SELECT
-    <include refid="Base_Column_List" />
-    FROM attribute_value
-    <where>
-      <include refid="attribute_value_if_sql"/>
-    </where>
-    <include refid="attribute_value_order_sql"/>
-  </select>
 
   <cache />
 </mapper>
