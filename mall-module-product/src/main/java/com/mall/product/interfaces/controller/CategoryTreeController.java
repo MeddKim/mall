@@ -4,12 +4,14 @@ import com.mall.core.domain.entity.product.CategoryTree;
 import com.mall.core.domain.enumeration.product.CategoryTreeTypeEnum;
 import com.mall.core.domain.utils.BaseResponse;
 import com.mall.core.domain.utils.HttpCode;
+import com.mall.product.interfaces.config.DataConfig;
 import com.mall.product.interfaces.exception.ValidateParamException;
 import com.mall.product.interfaces.service.CategoryTreeService;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class CategoryTreeController {
 
     @Autowired
     private CategoryTreeService categoryTreeService;
+
 
     @PostMapping("/tree")
     public Object addCategoryTree(@RequestBody AddTreeReq addTreeReq, BindingResult bindingResult){
@@ -52,5 +55,10 @@ public class CategoryTreeController {
     @GetMapping("/tree/{id}")
     public Object getCategoryTree(@PathVariable Long id){
         return null;
+    }
+
+    @GetMapping("/test/from")
+    public Object configFromConfigSever(){
+        return DataConfig.from;
     }
 }

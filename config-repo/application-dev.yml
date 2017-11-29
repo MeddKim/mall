@@ -13,3 +13,5 @@ spring:
   jackson:
     serialization:
       write_dates_as_timestamps: false
+  from: "this is test value"
+
