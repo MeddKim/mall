@@ -8,9 +8,9 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>com.mall</groupId>
-  <artifactId>mall-eureka-server</artifactId>
+  <artifactId>mall-base-eureka-server</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>mall-eureka-server</name>
+  <name>mall-base-eureka-server</name>
   <url>http://www.meddkim.com</url>
   <description>商城-Eureka服务注册中心</description>
 

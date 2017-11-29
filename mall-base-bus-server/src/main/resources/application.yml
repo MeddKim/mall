@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: mall-base-bus-server
+  rabbitmq:
+    host: meddkim.org
+    port: 2372
+    username: meddkim
+    password: meddkim
+server:
+  port: 8003
+eureka:
+  instance:
+    hostname: localhost
+#  server:
+#    enable-self-preservation: false
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+

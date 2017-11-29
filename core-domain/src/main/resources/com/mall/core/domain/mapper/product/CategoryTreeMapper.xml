@@ -187,8 +187,8 @@
     <include refid="Common_Column_List" />
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.mall.core.domain.entity.product.CategoryTree">
+    select
     <include refid="Base_Column_List" />
     from category_tree
     where id = #{id}

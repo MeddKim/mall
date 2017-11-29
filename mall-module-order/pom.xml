@@ -8,11 +8,11 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>com.mall</groupId>
-  <artifactId>mall-module-product</artifactId>
+  <artifactId>mall-module-order</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>mall-module-product</name>
+  <name>mall-module-order</name>
   <url>http://maven.apache.org</url>
-  <description>商城-商品模块</description>
+  <description>商城-订单模块</description>
 
 
   <dependencies>

@@ -10,7 +10,7 @@
   <groupId>com.mall</groupId>
   <artifactId>mall-config-server</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>mall-config-server</name>
+  <name>mall-base-config-server</name>
   <url>http://www.meddkim.com</url>
   <description>商城配置服务中心</description>
 

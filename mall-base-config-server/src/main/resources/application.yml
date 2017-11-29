@@ -10,7 +10,7 @@ spring:
           username: meddkim
           password: wzy19920323
 server:
-  port: 8010
+  port: 8002
 
 #############################################
 # 访问git配置文件规则：

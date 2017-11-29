@@ -1,4 +1,9 @@
+server:
+  port: 8102
+#  context-path: /api/product
 spring:
+  application:
+    name: order-module-service
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     name: main
@@ -13,3 +18,13 @@ spring:
   jackson:
     serialization:
       write_dates_as_timestamps: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: com/mall/core/domain/mapper/**/*.xml
+  type-aliases-package: com.mall.core.domain.entity
+swagger:
+  enabled: true
