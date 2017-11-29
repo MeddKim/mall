@@ -13,11 +13,9 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class DataConfig {
 
-    @Value("${spring.from}")
-    public static String from;
-
     @Bean
-    public static MapperScannerConfigurer mapperScannerConfigurer(){
+    public static MapperScannerConfigurer mapperScannerConfigurer(@Value("${spring.from}") String from){
+        System.out.println("测试值：  "+from);
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setBasePackage("com.mall.core.domain.mapper");
         mapperScannerConfigurer.setAnnotationClass(org.springframework.stereotype.Repository.class);

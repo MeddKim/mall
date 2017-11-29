@@ -59,6 +59,6 @@ public class CategoryTreeController {
 
     @GetMapping("/test/from")
     public Object configFromConfigSever(){
-        return DataConfig.from;
+        return  "hello";
     }
 }
