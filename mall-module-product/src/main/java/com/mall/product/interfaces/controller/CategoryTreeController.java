@@ -12,12 +12,14 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+@RefreshScope
 @RestController
 @RequestMapping("/categoryTree")
 public class CategoryTreeController {
@@ -25,6 +27,8 @@ public class CategoryTreeController {
     @Autowired
     private CategoryTreeService categoryTreeService;
 
+    @Value("${spring.demostr}")
+    private String url;
 
     @PostMapping("/tree")
     public Object addCategoryTree(@RequestBody AddTreeReq addTreeReq, BindingResult bindingResult){
@@ -57,8 +61,8 @@ public class CategoryTreeController {
         return null;
     }
 
-    @GetMapping("/test/from")
+    @GetMapping("/test")
     public Object configFromConfigSever(){
-        return  "hello";
+        return  url;
     }
 }
