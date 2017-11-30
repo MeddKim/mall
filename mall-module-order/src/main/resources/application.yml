@@ -1,7 +1,20 @@
 server:
   port: 8102
 #  context-path: /api/product
-
+spring:
+  application:
+    name: order-module-service
+  rabbitmq:
+    host: meddkim.org
+    port: 2372
+    username: meddkim
+    password: meddkim
+  sleuth:
+    sampler:
+      percentage: 1
+#  zipkin:
+#    base-url: http://localhost:8003
+#    enabled: true
 eureka:
   client:
     service-url:
@@ -12,3 +25,5 @@ mybatis:
   type-aliases-package: com.mall.core.domain.entity
 swagger:
   enabled: true
+logging:
+  level: debug

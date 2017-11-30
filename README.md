@@ -5,7 +5,7 @@
 端口：8001-8099
 - mall-base-eureka-server : 服务注册发现中心（8001）
 - mall-base-config-server : 配置中心（8002）
-- mall-base-bus-server : 消息总线（8003）
+- mall-base-stream-server : 消息总驱动（8003）
 
 ### 基础业务模块
 端口：8101-8299

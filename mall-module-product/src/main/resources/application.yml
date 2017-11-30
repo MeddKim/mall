@@ -4,6 +4,23 @@ server:
 spring:
   application:
     name: product-module-service
+  rabbitmq:
+    host: meddkim.org
+    port: 2372
+    username: meddkim
+    password: meddkim
+  sleuth:
+    sampler:
+      percentage: 1
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: raw-sensor-data  # 该配置就会创建exchange为raw-sensor-data,queue为raw-sensor-data.***的绑定关系
+          group: mall-module-product #指定组名，同一组内消息被消费一次
+#  zipkin:
+#    base-url: http://localhost:8003
+#    enabled: true
 eureka:
   client:
     service-url:
@@ -14,3 +31,5 @@ mybatis:
   type-aliases-package: com.mall.core.domain.entity
 swagger:
   enabled: true
+logging:
+  level: debug

@@ -13,9 +13,12 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class DataConfig {
 
+    @Value("${spring.demostr}")
+    private String url;
+
     @Bean
-    public static MapperScannerConfigurer mapperScannerConfigurer(@Value("${spring.from}") String from){
-        System.out.println("测试值：  "+from);
+    public static MapperScannerConfigurer mapperScannerConfigurer(@Value("${spring.demostr}") String url){
+        System.out.println("测试值：  "+url);
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setBasePackage("com.mall.core.domain.mapper");
         mapperScannerConfigurer.setAnnotationClass(org.springframework.stereotype.Repository.class);

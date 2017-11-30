@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: mall-base-log-server
+  datasource:
+    url: jdbc:mysql://118.190.74.13:3306/zipkin?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: meddkim
+  rabbitmq:
+    host: meddkim.org
+    port: 2372
+    username: meddkim
+    password: meddkim
+server:
+  port: 8003
+zipkin:
+  storage:
+    type: mysql
+
+
+

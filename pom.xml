@@ -65,7 +65,7 @@
 	<module>core-domain</module>
     <module>mall-base-config-server</module>
     <module>mall-base-eureka-server</module>
-    <module>mall-base-bus-server</module>
+    <module>mall-base-log-server</module>
     <module>mall-module-product</module>
     <module>mall-module-order</module>
     <module>mall-api-merchant</module>

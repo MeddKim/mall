@@ -13,6 +13,7 @@ import com.mall.product.interfaces.exception.ValidateParamException;
 import com.mall.product.interfaces.service.AttributeService;
 import io.swagger.annotations.*;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ import java.util.Map;
 /**
  * Created by Meddkim on 2017/11/18.
  */
+@Slf4j
 @RequestMapping("/attribute")
 @RestController
 public class AttributeController {
@@ -123,6 +125,9 @@ public class AttributeController {
 
     @GetMapping("/attributeValue/list")
     public Object findAttValues(@RequestParam Long attNameId){
+
+        log.info("--product-module-service trace--");
+
         if(null == attNameId){
             throw new ValidateParamException("attNameId不能为空");
         }
