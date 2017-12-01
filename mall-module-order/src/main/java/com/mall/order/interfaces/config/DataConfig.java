@@ -1,4 +1,4 @@
-package com.mall.product.interfaces.config;
+package com.mall.order.interfaces.config;
 
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;

@@ -4,7 +4,6 @@ import com.mall.core.domain.entity.product.CategoryTree;
 import com.mall.core.domain.enumeration.product.CategoryTreeTypeEnum;
 import com.mall.core.domain.utils.BaseResponse;
 import com.mall.core.domain.utils.HttpCode;
-import com.mall.product.interfaces.config.DataConfig;
 import com.mall.product.interfaces.exception.ValidateParamException;
 import com.mall.product.interfaces.service.CategoryTreeService;
 import lombok.Data;
@@ -16,7 +15,6 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @RefreshScope

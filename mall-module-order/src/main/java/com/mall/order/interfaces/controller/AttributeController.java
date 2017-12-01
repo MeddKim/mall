@@ -1,10 +1,12 @@
-package com.mall.product.interfaces.controller;
+package com.mall.order.interfaces.controller;
 
 
-import com.mall.product.interfaces.client.AttributeService;
+import com.mall.order.interfaces.client.AttributeService;
 import com.mall.product.interfaces.exception.ValidateParamException;
+import com.mall.order.interfaces.message.SinkSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,9 @@ public class AttributeController {
     @Autowired
     private AttributeService attributeService;
 
+    @Autowired
+    private SinkSender sinkSender;
+
     @GetMapping("/list")
     public Object findAttValues(@RequestParam Long attNameId){
 
@@ -28,4 +33,10 @@ public class AttributeController {
         }
         return attributeService.findAttValues(attNameId);
     }
+
+    @GetMapping("/send")
+    public void sendTest(){
+        sinkSender.ouptput().send(MessageBuilder.withPayload("发送一个消息").build());
+    }
+
 }

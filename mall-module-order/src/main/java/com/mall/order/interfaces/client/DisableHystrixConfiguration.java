@@ -1,4 +1,4 @@
-package com.mall.product.interfaces.client;
+package com.mall.order.interfaces.client;
 
 import feign.Feign;
 import org.springframework.context.annotation.Bean;
