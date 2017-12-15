@@ -23,7 +23,14 @@ public class Doge {
          * 模块加载
          */
         private synchronized void load(){
+            //若加载过了就无需再次加载
+            if(this.moduleClass != null){
+                return;
+            }
             System.out.println("---"+this.name()+"模块开始加载---");
+
+            final String moduleClassName = resolveClassName(this);
+
         }
     }
 
