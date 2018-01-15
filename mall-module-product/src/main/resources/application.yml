@@ -5,8 +5,8 @@ spring:
   application:
     name: product-module-service
   rabbitmq:
-    host: meddkim.org
-    port: 2372
+    host: 116.196.75.83
+    port: 5672
     username: meddkim
     password: meddkim
   sleuth:
