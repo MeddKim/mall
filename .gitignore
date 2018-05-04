@@ -4,3 +4,5 @@ target/
 .tmp
 bower_components
 node_modules
+out/
+build/

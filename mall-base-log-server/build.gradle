@@ -1,0 +1,10 @@
+
+description = 'mall-base-log-server'
+dependencies {
+    compile group: 'io.zipkin.java', name: 'zipkin-autoconfigure-ui', version:'1.28.0'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin-stream', version:'1.2.5.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-rabbit', version:'1.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version:'1.5.6.RELEASE'
+    compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.43'
+    compile group: 'org.jooq', name: 'jooq', version:'3.8.0'
+}

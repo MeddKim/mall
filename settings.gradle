@@ -1,0 +1,16 @@
+rootProject.name = 'mall-parent'
+include ':core-domain'
+include ':mall-base-config-server'
+include ':mall-base-eureka-server'
+include ':mall-base-log-server'
+include ':mall-module-product'
+include ':mall-module-order'
+include ':mall-api-merchant'
+
+project(':core-domain').projectDir = "$rootDir/core-domain" as File
+project(':mall-base-config-server').projectDir = "$rootDir/mall-base-config-server" as File
+project(':mall-base-eureka-server').projectDir = "$rootDir/mall-base-eureka-server" as File
+project(':mall-base-log-server').projectDir = "$rootDir/mall-base-log-server" as File
+project(':mall-module-product').projectDir = "$rootDir/mall-module-product" as File
+project(':mall-module-order').projectDir = "$rootDir/mall-module-order" as File
+project(':mall-api-merchant').projectDir = "$rootDir/mall-api-merchant" as File
