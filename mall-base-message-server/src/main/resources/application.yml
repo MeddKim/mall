@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: mall-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/MeddKim/mall
+          search-paths: config-repo
+          username: meddkim
+          password: wzy19920323
+server:
+  port: 8002
+
+#############################################
+# 访问git配置文件规则：
+# http:8881/{application}/profile/{label}
+#    其中application是文件名； profile为环境名； label为git分支名,默认为master；文件类型为proties或者yml
+# 如 http://localhost:8881/didispace/prod/会访问指定git项目master分支下的didspace-prop.properties(didspace-prop.yml)文件
+#
+#############################################

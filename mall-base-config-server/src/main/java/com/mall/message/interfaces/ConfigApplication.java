@@ -1,4 +1,4 @@
-package com.mall.config.interfaces;
+package com.mall.message.interfaces;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
