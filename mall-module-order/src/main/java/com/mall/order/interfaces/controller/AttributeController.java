@@ -2,8 +2,8 @@ package com.mall.order.interfaces.controller;
 
 
 import com.mall.order.interfaces.client.AttributeService;
-import com.mall.product.interfaces.exception.ValidateParamException;
 import com.mall.order.interfaces.message.SinkSender;
+import com.mall.product.interfaces.exception.ValidateParamException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
@@ -39,4 +39,9 @@ public class AttributeController {
         sinkSender.ouptput().send(MessageBuilder.withPayload("发送一个消息").build());
     }
 
+
+    @GetMapping("msg/test")
+    private Object msgTest(){
+        return "成功";
+    }
 }
