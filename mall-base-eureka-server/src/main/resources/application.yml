@@ -14,7 +14,9 @@ spring:
   boot:
     admin:
       context-path: /sba
-
+management:
+  security:
+    enabled: false
 
 
 
