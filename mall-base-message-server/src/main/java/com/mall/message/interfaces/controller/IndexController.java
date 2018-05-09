@@ -1,6 +1,5 @@
 package com.mall.message.interfaces.controller;
 
-import com.mall.message.interfaces.service.KeyValueService;
 import com.mall.message.interfaces.service.RedisService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
