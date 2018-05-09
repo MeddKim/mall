@@ -38,9 +38,9 @@ public class IndexController {
         return "成功！";
     }
 
-    @GetMapping("/expire/{name}")
-    public Object expire(@PathVariable String name){
-        if(redisService.setNX(name,100L)){
+    @GetMapping("/expire")
+    public Object expire(){
+        if(redisService.setNX("131313","呵呵呵呵",10)){
             return "成功";
         }else {
             return "失败";

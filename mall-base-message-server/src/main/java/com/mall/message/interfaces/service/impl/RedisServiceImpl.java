@@ -3,9 +3,13 @@ package com.mall.message.interfaces.service.impl;
 import com.mall.message.interfaces.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.TimeoutUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -26,10 +30,12 @@ public class RedisServiceImpl implements RedisService{
     private JedisConnectionFactory jedisConnectionFactory;  //用于修改dbIndex
 
     @Override
-    public Boolean setNX(String key,long expire) {
-//        return redisTemplate.expire(key,expire, TimeUnit.SECONDS);
-        redisTemplate.opsForValue().set("12121212","呵呵呵");
-        return stringRedisTemplate.expire("12121212",expire,TimeUnit.SECONDS);
+    public Boolean setNX(String key,String value,long expire) {
+        Boolean result = redisTemplate.opsForValue().setIfAbsent(key,value);
+        if(result){
+            redisTemplate.expire(key,expire,TimeUnit.SECONDS);
+        }
+        return result;
     }
 
     @Override

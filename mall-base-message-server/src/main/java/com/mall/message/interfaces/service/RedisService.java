@@ -8,9 +8,14 @@ import java.util.Map;
 import java.util.Set;
 
 public interface RedisService {
-    // expire: seconds
-
-    Boolean setNX(String key,long expire);
+    /**
+     * 用于分布式锁
+     * @param key
+     * @param value
+     * @param expire  过期时间，单位为秒
+     * @return
+     */
+    Boolean setNX(String key,String value,long expire);
 
     default void put(String key, String value) {
         put(key, Constants.TIME_OF_ONE_DAY, value);
