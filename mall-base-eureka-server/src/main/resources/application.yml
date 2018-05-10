@@ -10,13 +10,6 @@ eureka:
     fetch-registry: false # false不向注册中心检索服务
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-spring:
-  boot:
-    admin:
-      context-path: /sba
-management:
-  security:
-    enabled: false
 
 
 
