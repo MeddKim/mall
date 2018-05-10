@@ -1,10 +1,10 @@
-package com.mall.actuator.interfaces.service.impl;
+package com.mall.message.interfaces.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.mall.actuator.interfaces.service.KeyValueService;
+import com.mall.message.interfaces.service.KeyValueService;
 import com.mall.core.domain.utils.Constants;
 import com.mall.core.domain.utils.TimeUtils;
 import lombok.extern.slf4j.Slf4j;

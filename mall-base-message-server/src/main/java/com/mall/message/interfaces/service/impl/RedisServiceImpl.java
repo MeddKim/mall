@@ -1,6 +1,6 @@
-package com.mall.actuator.interfaces.service.impl;
+package com.mall.message.interfaces.service.impl;
 
-import com.mall.actuator.interfaces.service.RedisService;
+import com.mall.message.interfaces.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;

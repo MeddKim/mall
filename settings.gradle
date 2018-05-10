@@ -4,6 +4,7 @@ include ':mall-base-config-server'
 include ':mall-base-eureka-server'
 include ':mall-base-log-server'
 include ':mall-base-message-server'
+include ':mall-base-actuator-server'
 include ':mall-module-product'
 include ':mall-module-order'
 include ':mall-api-merchant'
@@ -13,6 +14,7 @@ project(':mall-base-config-server').projectDir = "$rootDir/mall-base-config-serv
 project(':mall-base-eureka-server').projectDir = "$rootDir/mall-base-eureka-server" as File
 project(':mall-base-log-server').projectDir = "$rootDir/mall-base-log-server" as File
 project(':mall-base-message-server').projectDir = "$rootDir/mall-base-message-server" as File
+project(':mall-base-actuator-server').projectDir = "$rootDir/mall-base-actuator-server" as File
 project(':mall-module-product').projectDir = "$rootDir/mall-module-product" as File
 project(':mall-module-order').projectDir = "$rootDir/mall-module-order" as File
 project(':mall-api-merchant').projectDir = "$rootDir/mall-api-merchant" as File

@@ -1,0 +1,19 @@
+server:
+  port: 8105
+#  context-path: /api/product
+spring:
+  application:
+    name: mall-base-actuator-service
+  boot:
+    admin:
+      context-path: /sba
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+management:
+  security:
+    enabled: false
+
+
+

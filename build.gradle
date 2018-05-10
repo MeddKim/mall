@@ -15,7 +15,8 @@ subprojects {
     }
 
     ext{
-        springCloudVersion = 'Dalston.SR5'
+        //springCloudVersion = 'Dalston.SR5'
+        springCloudVersion = 'Edgware.SR3'
     }
 
     dependencyManagement {

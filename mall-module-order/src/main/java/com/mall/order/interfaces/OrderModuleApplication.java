@@ -1,6 +1,7 @@
 package com.mall.order.interfaces;
 
 import com.spring4all.swagger.EnableSwagger2Doc;
+import de.codecentric.boot.admin.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -10,11 +11,12 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * Created by Meddkim on 2017/11/18.
  */
-@EnableDiscoveryClient
 @SpringBootApplication
+@EnableDiscoveryClient
 @EnableFeignClients
 @EnableSwagger2Doc
 @ComponentScan(basePackages = {"com.mall.order.interfaces"})
+@EnableAdminServer
 public class OrderModuleApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderModuleApplication.class, args);

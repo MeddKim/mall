@@ -1,0 +1,7 @@
+
+description = 'mall-base-actuator-server'
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'de.codecentric:spring-boot-admin-server:1.5.7'
+    compile 'de.codecentric:spring-boot-admin-server-ui:1.5.7'
+}
