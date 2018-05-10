@@ -1,4 +1,4 @@
-package com.mall.message.interfaces;
+package com.mall.actuator.interfaces;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

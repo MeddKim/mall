@@ -1,16 +1,15 @@
-package com.mall.message.interfaces.service.impl;
+package com.mall.actuator.interfaces.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.mall.actuator.interfaces.service.KeyValueService;
 import com.mall.core.domain.utils.Constants;
 import com.mall.core.domain.utils.TimeUtils;
-import com.mall.message.interfaces.service.KeyValueService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;

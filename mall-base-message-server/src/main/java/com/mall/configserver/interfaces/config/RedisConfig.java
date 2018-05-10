@@ -1,4 +1,4 @@
-package com.mall.message.interfaces.config;
+package com.mall.actuator.interfaces.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

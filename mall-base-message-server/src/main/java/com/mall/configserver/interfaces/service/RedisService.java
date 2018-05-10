@@ -1,4 +1,4 @@
-package com.mall.message.interfaces.service;
+package com.mall.actuator.interfaces.service;
 
 import com.mall.core.domain.utils.Constants;
 

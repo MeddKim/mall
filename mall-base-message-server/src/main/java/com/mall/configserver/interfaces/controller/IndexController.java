@@ -1,6 +1,6 @@
-package com.mall.message.interfaces.controller;
+package com.mall.actuator.interfaces.controller;
 
-import com.mall.message.interfaces.service.RedisService;
+import com.mall.actuator.interfaces.service.RedisService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
