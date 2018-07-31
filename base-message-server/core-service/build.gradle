@@ -1,0 +1,13 @@
+
+description = 'mall-base-message-server'
+dependencies {
+    compile project(':core-domain')
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}")
+    compile 'mysql:mysql-connector-java:5.1.43'
+    compile 'com.zaxxer:HikariCP:2.7.3'
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+//    compile files('/home/willard/file/repo/txc-client-2.0.72.jar')
+//    compile 'com.taobao.middleware:logger.api:0.1.5'
+}

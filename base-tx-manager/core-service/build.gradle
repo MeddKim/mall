@@ -1,0 +1,10 @@
+
+description = 'mall-base-tx-manager'
+dependencies {
+	compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+	compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}")
+	compile ("com.github.1991wangliang:lorne_core:1.0.0"){
+		exclude group: 'org.slf4j', module: '*'
+	}
+	compile 'io.netty:netty-all:4.1.12.Final'
+}

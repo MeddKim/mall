@@ -1,7 +1,11 @@
 .idea/
+**/.idea/
 classes/
+**/classes/
 .gradle/
+**/gradle/
 *.iml
+**/.iml
 *.ipr
 *.iws
 **/rebel*.xml
@@ -14,3 +18,5 @@ classes/
 /node_modules/
 **/bower_components/
 **/node_modules/
+logs/
+**/logs/

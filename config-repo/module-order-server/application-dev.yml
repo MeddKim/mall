@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    name: main
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://116.196.75.83:3306/mall?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: meddkim
+    hikari:
+      maximum-pool-size: 3
+      leak-detection-threshold: 16000
+      connection-timeout: 30000
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  demostr: this is a test demo
+
+feign:
+  hystrix:
+    enabled: true
+

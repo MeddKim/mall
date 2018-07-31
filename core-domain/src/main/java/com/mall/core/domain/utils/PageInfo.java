@@ -1,7 +1,6 @@
 package com.mall.core.domain.utils;
 
 import com.github.pagehelper.Page;
-import com.google.common.collect.Lists;
 import lombok.Data;
 
 import java.util.ArrayList;

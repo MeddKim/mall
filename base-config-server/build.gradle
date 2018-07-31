@@ -1,0 +1,68 @@
+allprojects {
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+    apply plugin: 'groovy'
+    apply plugin: 'maven'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'spring-boot'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    //以下是打包信息
+    group 'com.mall.config'
+    version '1.0-SNAPSHOT'
+
+    final String env = System.getProperty("env")
+
+    if ("prod".equalsIgnoreCase(System.getProperty("env"))) {
+        version '1.0-RELEASE'
+    }
+
+    ext{
+        //springCloudVersion = 'Dalston.SR5'
+        springCloudVersion = 'Edgware.SR3'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    repositories {
+        maven {
+            url "${nexusUrl}/repository/maven-public/"
+            credentials {
+                username nexusUsername
+                password nexusPassword
+            }
+        }
+    }
+}
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
+    repositories {
+        maven {
+            url "${nexusUrl}/repository/maven-public/"
+            credentials {
+                username nexusUsername
+                password nexusPassword
+            }
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+

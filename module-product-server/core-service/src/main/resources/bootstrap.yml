@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: http://116.196.75.83:8002/
+      profile: dev
+      label: master

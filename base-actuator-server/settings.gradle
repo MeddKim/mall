@@ -1,0 +1,7 @@
+rootProject.name = 'base-actuator-server'
+
+include ':core-service'
+project(':core-service').name = rootProject.name + '-core-service'
+
+//include ':core-domain'
+//project(':core-domain').projectDir = new File(settingsDir, '../core-domain')

@@ -1,0 +1,35 @@
+server:
+  port: 8101
+#  context-path: /api/product
+spring:
+  application:
+    name: product-module-service
+  rabbitmq:
+    host: 116.196.75.83
+    port: 5672
+    username: meddkim
+    password: meddkim
+  sleuth:
+    sampler:
+      percentage: 1
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: raw-sensor-data  # 该配置就会创建exchange为raw-sensor-data,queue为raw-sensor-data.***的绑定关系
+          group: mall-module-product #指定组名，同一组内消息被消费一次
+#  zipkin:
+#    base-url: http://localhost:8003
+#    enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://116.196.75.83:8001/eureka/
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: com/mall/core/domain/mapper/**/*.xml
+  type-aliases-package: com.mall.core.domain.entity
+swagger:
+  enabled: true
+logging:
+  level: debug

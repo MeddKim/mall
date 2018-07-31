@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: mall-base-message-server
+  redis:
+    host: 116.196.75.83
+    port: 6379
+    timeout: 5000
+    password: meddkim
+    pool:
+      max-idle: 5
+      min-idle: 1
+      max-active: 7
+      max-wait: 10000
+  rabbitmq:
+    host: 116.196.75.83
+    port: 5672
+    username: meddkim
+    password: meddkim
+server:
+  port: 8015
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://116.196.75.83:8001/eureka/
+
+redis:
+  host: 116.196.75.83
+  port: 6379
+  password: meddkim
+  timeout: 5000
+  pool:
+    max-idle: 5
+    max-total: 50
+    max-wait-millis: 10000
+    min-idle: 1
+

@@ -1,0 +1,10 @@
+//apply plugin: 'java'
+//apply plugin: 'org.springframework.boot'
+
+
+description = 'base-eureka-server-core-service'
+
+
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka-server'
+}
