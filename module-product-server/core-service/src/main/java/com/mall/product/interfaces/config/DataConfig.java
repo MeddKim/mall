@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class DataConfig {
 
-    @Value("${spring.demostr}")
-    private String url;
+//    @Value("${spring.demostr}")
+//    private String url;
 
     @Bean
     public static MapperScannerConfigurer mapperScannerConfigurer(@Value("${spring.demostr}") String url){
