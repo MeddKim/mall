@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.core.domain.mapper.message.MessageNotifyMapper">
+
+
+    <sql id="Base_Column_List">
+        id, content, create_time,
+        <include refid="com.mall.core.domain.mapper.CommonSql.Common_Column_List"/>
+    </sql>
+
+    <insert id="insert" parameterType="com.mall.core.domain.entity.message.MessageNotify">
+        insert into message_notify
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+        </trim>
+    </insert>
+
+    <cache />
+</mapper>

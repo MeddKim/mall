@@ -9,5 +9,6 @@
   -->
   <mappers>
     <mapper resource="com/mall/core/domain/mapper/product/CategoryTreeMapper.xml" />
+    <mapper resource="com/mall/core/domain/mapper/product/MallCommonSql.xml" />
   </mappers>
 </configuration>

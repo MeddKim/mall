@@ -1,5 +1,7 @@
 package com.mall.message.interfaces.config;
 
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -42,4 +44,11 @@ public class DataConfig {
         return new GenericJackson2JsonRedisSerializer();
     }
 
+    @Bean
+    public static MapperScannerConfigurer mapperScannerConfigurer(){
+        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+        mapperScannerConfigurer.setBasePackage("com.mall.core.domain.mapper");
+        mapperScannerConfigurer.setAnnotationClass(org.springframework.stereotype.Repository.class);
+        return mapperScannerConfigurer;
+    }
 }
