@@ -27,7 +27,7 @@ eureka:
       defaultZone: http://116.196.75.83:8001/eureka/
 mybatis:
   config-location: classpath:mybatis-config.xml
-  mapper-locations: com/mall/core/domain/mapper/**/*.xml
+  mapper-locations: classpath:com/mall/core/domain/mapper/**/*.xml
   type-aliases-package: com.mall.core.domain.entity
 swagger:
   enabled: true

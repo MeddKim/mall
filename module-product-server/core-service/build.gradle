@@ -14,4 +14,11 @@ dependencies {
     compile 'com.spring4all:spring-boot-starter-swagger:1.5.1.RELEASE'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.2'
     compileOnly 'org.projectlombok:lombok:1.16.18'
+    //分布式事物
+    compile (group: 'com.codingapi', name: 'transaction-springcloud', version: '4.1.0'){
+      exclude group: 'org.slf4j', module: '*'
+    }
+    compile (group: 'com.codingapi', name: 'tx-plugins-db', version: '4.1.0'){
+      exclude group: 'org.slf4j', module: '*'
+    }
 }

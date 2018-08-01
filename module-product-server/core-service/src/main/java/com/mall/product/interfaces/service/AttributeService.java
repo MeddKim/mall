@@ -1,5 +1,6 @@
 package com.mall.product.interfaces.service;
 
+import com.mall.core.domain.entity.Test;
 import com.mall.core.domain.entity.product.AttributeName;
 import com.mall.core.domain.entity.product.AttributeValue;
 import org.apache.ibatis.session.RowBounds;
@@ -24,4 +25,5 @@ public interface AttributeService {
 
     List<AttributeValue> findAttValueByParams(Map<String,Object> paramsMap);
 
+    void addTest(Test test);
 }

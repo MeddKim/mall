@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.mall.core.domain.entity.Test;
 import com.mall.core.domain.entity.product.AttributeName;
 import com.mall.core.domain.entity.product.AttributeValue;
 import com.mall.core.domain.enumeration.product.AttributeTypeEnum;
@@ -179,5 +180,15 @@ public class AttributeController {
     @PostMapping("/attributeValue/sort")
     public Object ajustAttValueSort(){
         return null;
+    }
+
+
+    @GetMapping("/test/add")
+    public Object addTest(){
+        Test test = new Test();
+        test.setName("张三");
+        test.setCreateTime(TimeUtils.now());
+        attributeService.addTest(test);
+        return "添加成功";
     }
 }

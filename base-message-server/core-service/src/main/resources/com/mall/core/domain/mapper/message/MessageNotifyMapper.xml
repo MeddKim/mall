@@ -5,7 +5,6 @@
 
     <sql id="Base_Column_List">
         id, content, create_time,
-        <include refid="com.mall.core.domain.mapper.CommonSql.Common_Column_List"/>
     </sql>
 
     <insert id="insert" parameterType="com.mall.core.domain.entity.message.MessageNotify">

@@ -35,3 +35,7 @@ redis:
     max-wait-millis: 10000
     min-idle: 1
 
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:com/mall/core/domain/mapper/**/*.xml
+  type-aliases-package: com.mall.core.domain.entity

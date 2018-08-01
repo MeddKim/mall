@@ -181,6 +181,4 @@
         </if>
     </sql>
     <!-- Common sql end-->
-
-    <cache />
 </mapper>
