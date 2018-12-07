@@ -42,6 +42,8 @@ dependencies {
     compile "org.springframework:spring-tx:${springVersion}"
     compile "org.springframework:spring-context:${springVersion}"
 
+    compile 'org.springframework.boot:spring-boot-starter-logging:2.1.1.RELEASE'
+
     //lombok code generate
     compile 'org.projectlombok:lombok:1.16.10'
     //google guava utils
